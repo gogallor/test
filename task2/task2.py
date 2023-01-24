@@ -4,14 +4,21 @@
 # In[ ]:
 
 
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('a', type=str)
+parser.add_argument('b', type=str)
+args = parser.parse_args()
+
+
 #a = input('введите путь к файлу параметров окружности\n')
 #b = input('введите путь к файлу координат точек\n')
 
-a = 'params.txt'
-b = 'coordinates.txt'
+#a = 'params.txt'
+#b = 'coordinates.txt'
 
 params = []
-with open(a) as f:
+with open(args.a) as f:
     file_input = f.read().split()
     for i in file_input:
         try:
@@ -25,7 +32,7 @@ rad = params[2]
 
 coordinates = []
 
-with open("coordinates.txt") as f:
+with open(args.b) as f:
     for line in f:
         coordinates.append([float(x) for x in line.split()])     
         
