@@ -4,9 +4,18 @@
 # In[ ]:
 
 
-a = input('введите путь к файлу\n')
+import argparse
+import statistics
+
+parser = argparse.ArgumentParser()
+parser.add_argument('a', type=str)
+args = parser.parse_args()
+#print(args.a)
+
+
+#a = input('введите путь к файлу\n')
 nums = []
-with open(a) as f:
+with open(args.a) as f:
     file_input = f.read().split()
     for i in file_input:
         try:
@@ -18,4 +27,3 @@ with open(a) as f:
 m = statistics.median(nums)
 #print(m)
 print(int(sum(abs(v - m) for v in nums)))
-
